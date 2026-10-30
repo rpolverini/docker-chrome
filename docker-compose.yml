@@ -1,0 +1,20 @@
+services:
+  chrome:
+    build:
+      context: .
+      args:
+        BROWSER: ${BROWSER:-chrome}   # chrome (amd64 only) or chromium
+    ports:
+      - "5800:5800"
+    # No auth by default: protect it at the proxy (Cloudflare Access, etc.).
+    # Optional: WEB_AUTHENTICATION=1 + WEB_AUTHENTICATION_USERNAME/PASSWORD + SECURE_CONNECTION=1.
+    environment:
+      DISPLAY_WIDTH: ${DISPLAY_WIDTH:-1920}
+      DISPLAY_HEIGHT: ${DISPLAY_HEIGHT:-1080}
+    volumes:
+      - chrome-config:/config
+    shm_size: 2gb
+    restart: unless-stopped
+
+volumes:
+  chrome-config:
