@@ -1,9 +1,6 @@
 services:
   chrome:
-    build:
-      context: .
-      args:
-        BROWSER: ${BROWSER:-chrome}   # chrome (amd64 only) or chromium
+    build: .
     ports:
       - "5800:5800"
     # No auth by default: protect it at the proxy (Cloudflare Access, etc.).

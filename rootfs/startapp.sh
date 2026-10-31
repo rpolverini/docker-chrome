@@ -7,7 +7,7 @@ rm -f /config/profile/SingletonLock /config/profile/SingletonCookie /config/prof
 
 # --no-sandbox: the container has no user namespaces by default.
 # --password-store=basic: no keyring in the container; keeps Sync/login state in the profile.
-exec "$(command -v google-chrome-stable || command -v chromium)" \
+exec google-chrome-stable \
     --user-data-dir=/config/profile \
     --no-sandbox \
     --password-store=basic \
